@@ -24,11 +24,12 @@ func (c *MainController) Get() {
 		panic(err)
 	}
 
-	containers, err := cli.ContainerList(context.Background(), types.ContainerListOptions{})
+	containers, err := cli.ContainerList(context.Background(), types.ContainerListOptions{All: true})
 	if err != nil {
 		panic(err)
 	}
 
+	c.Data["Con"] = containers
 	for _, container := range containers {
 		fmt.Printf("%s %s\n", container.ID[:10], container.Image)
 	}
