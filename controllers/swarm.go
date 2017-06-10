@@ -24,6 +24,7 @@ func (c *SwarmController) InfoSwarm() {
 	}
 	fmt.Println(swarm)
 	c.Data["Swarm"] = swarm
+	c.Layout = "layout/main.tpl"
 	c.TplName = "swarm/index.tpl"
 }
 
