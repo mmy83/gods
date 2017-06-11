@@ -22,6 +22,7 @@
 						<th>STATUS</th>
 						<th>PORTS</th>
 						<th>NAMES</th>
+						<th>操作</th>
 					</tr>
 			    	</thead>
 				    	<tbody>  
@@ -34,6 +35,11 @@
 				            	<td>{{$val.Status}}</td>
 							<td>{{$val.Ports}}</td>
 				            	<td>{{$val.Names}}</td>
+							<td>
+								<a href="{{urlfor "ContainerController.StartContainer"}}" type="button">start</a>
+								<a href="{{urlfor "ContainerController.StopContainer"}}" type="button">stop</a>
+								<a href="{{urlfor "ContainerController.DeleteContainer"}}" type="button">delete</a>
+							</td>
 				        	</tr>
 						{{end}}
 					</tbody>

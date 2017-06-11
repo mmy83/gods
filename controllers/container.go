@@ -50,3 +50,13 @@ func (c *ContainerController) UpdateContainer() {
 func (c *ContainerController) InfoContainer() {
 
 }
+
+// @router /container/start [get]
+func (c *ContainerController) StartContainer() {
+
+}
+
+// @router /container/stop [get]
+func (c *ContainerController) StopContainer() {
+
+}
