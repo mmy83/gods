@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">容器列表</h1>
-		<button type="button" class="btn btn-primary btn-lg text-rigth">创建容器</button>
+		<a type="button" href="{{urlfor "ContainerController.CreateContainer"}}" class="btn btn-primary btn-lg text-rigth">创建容器</a>
 	</div>
 </div>
 <div class="row">
@@ -29,8 +29,8 @@
 						<tr class="odd gradeX">
 				            	<td class="">{{substr $val.ID 0 12}}</td>
 				            	<td>{{$val.Image}}</td>
-				            	<td class="sorting_1">{{$val.Command}}Image</td>
-				            	<td>{{$val.Created}}</td>
+				            	<td class="sorting_1">{{$val.Command}}</td>
+				            	<td>{{$val.Created|datetime}}</td>
 				            	<td>{{$val.Status}}</td>
 							<td>{{$val.Ports}}</td>
 				            	<td>{{$val.Names}}</td>

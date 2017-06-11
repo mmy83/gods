@@ -22,6 +22,7 @@ func (c *ContainerController) ListContainer() {
 	}
 	opt := types.ContainerListOptions{All: true}
 	containers, err := cli.ContainerList(context.Background(), opt)
+
 	fmt.Println(containers)
 	c.Data["Containers"] = containers
 	c.LayoutSections = make(map[string]string)
