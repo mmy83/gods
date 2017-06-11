@@ -16,14 +16,38 @@
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
+                            	<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 集群管理<span class="fa arrow"></span></a>
+                            	<ul class="nav nav-second-level">
+                                	<li>
+                                    	<a href="{{urlfor "SwarmController.InfoSwarm"}}">集群信息</a>
+                                	</li>
+								<li>
+                                    	<a href="{{urlfor "TaskController.ListTask"}}">节点管理</a>
+                                	</li>
+                                	<li>
+                                    	<a href="{{urlfor "ServiceController.ListService"}}">服务</a>
+                                	</li>
+								<li>
+                                    	<a href="{{urlfor "TaskController.ListTask"}}">任务</a>
+                                	</li>
+                            	</ul>
+                            	<!-- /.nav-second-level -->
+                        	</li>
+						<li>
+                            	<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 单机操作<span class="fa arrow"></span></a>
+                            	<ul class="nav nav-second-level">
+								<li>
+                                    	<a href="{{urlfor "ContainerController.ListContainer"}}">容器管理</a>
+                                	</li>
+                                	<li>
+                                    	<a href="{{urlfor "SwarmController.InfoSwarm"}}">镜像管理</a>
+                                	</li>
+                                	<li>
+                                    	<a href="{{urlfor "ServiceController.ListService"}}">容器管理</a>
+                                	</li>
+								<li>
+                                    	<a href="{{urlfor "TaskController.ListTask"}}">端口管理</a>
+                                	</li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
