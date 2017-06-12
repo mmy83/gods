@@ -55,13 +55,13 @@ func (c *ContainerController) InfoContainer() {
 func (c *ContainerController) StartContainer() {
 	id := c.GetString("id")
 	cli, err := client.NewEnvClient()
-	err = cli.ContainerStart(context.Background(), id, types.ContainerStartOptions)
+	err = cli.ContainerStart(context.Background(), id, types.ContainerStartOptions{})
 	if err != nil {
-		if client.IsErrContainerNotFound() {
+		if client.IsErrContainerNotFound(err) {
 			panic(err)
 		}
 	}
-	c.Redirect(URLfor("ContainerController.ListContainer"))
+	c.Redirect(c.URLFor("ContainerController.ListContainer"), 302)
 }
 
 // @router /container/stop [get]
