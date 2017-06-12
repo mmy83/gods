@@ -83,7 +83,8 @@ func (c *ContainerController) StopContainer() {
 	if err != nil {
 		panic(err)
 	}
-	err = cli.ContainerStop(context.Background(), id, time.Duration{0})
+	var t time.Duration = 0
+	err = cli.ContainerStop(context.Background(), id, &t)
 	if err != nil {
 		if client.IsErrContainerNotFound(err) {
 			panic(err)
