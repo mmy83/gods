@@ -37,8 +37,8 @@
 				            	<td>{{$val.Names}}</td>
 							<td>
 								<a href="{{urlfor "ContainerController.StartContainer" "id" $val.ID}}" type="button">start</a>
-								<a href="{{urlfor "ContainerController.StopContainer"}}" type="button">stop</a>
-								<a href="{{urlfor "ContainerController.DeleteContainer"}}" type="button">delete</a>
+								<a href="{{urlfor "ContainerController.StopContainer" "id" $val.ID}}" type="button">stop</a>
+								<a href="{{urlfor "ContainerController.DeleteContainer" "id" $val.ID}}" type="button">delete</a>
 							</td>
 				        	</tr>
 						{{end}}

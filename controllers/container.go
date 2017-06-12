@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/astaxie/beego"
 	"github.com/docker/docker/api/types"
@@ -36,9 +37,20 @@ func (c *ContainerController) CreateContainer() {
 
 }
 
-// @router /container/delete [get]
+// @router /container/delete:id [get]
 func (c *ContainerController) DeleteContainer() {
-
+	id := c.GetString("id")
+	cli, err := client.NewEnvClient()
+	if err != nil {
+		panic(err)
+	}
+	err = cli.ContainerRemove(context.Background(), id, types.ContainerRemoveOptions{})
+	if err != nil {
+		if client.IsErrContainerNotFound(err) {
+			panic(err)
+		}
+	}
+	c.Redirect(c.URLFor("ContainerController.ListContainer"), 302)
 }
 
 // @router /container/update [post]
@@ -64,7 +76,18 @@ func (c *ContainerController) StartContainer() {
 	c.Redirect(c.URLFor("ContainerController.ListContainer"), 302)
 }
 
-// @router /container/stop [get]
+// @router /container/stop:id [get]
 func (c *ContainerController) StopContainer() {
-
+	id := c.GetString("id")
+	cli, err := client.NewEnvClient()
+	if err != nil {
+		panic(err)
+	}
+	err = cli.ContainerStop(context.Background(), id, time.Duration{0})
+	if err != nil {
+		if client.IsErrContainerNotFound(err) {
+			panic(err)
+		}
+	}
+	c.Redirect(c.URLFor("ContainerController.ListContainer"), 302)
 }
