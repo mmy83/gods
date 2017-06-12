@@ -36,7 +36,7 @@
 							<td>{{$val.Ports}}</td>
 				            	<td>{{$val.Names}}</td>
 							<td>
-								<a href="{{urlfor "ContainerController.StartContainer"}}" type="button">start</a>
+								<a href="{{urlfor "ContainerController.StartContainer" ":id" $val.ID}}" type="button">start</a>
 								<a href="{{urlfor "ContainerController.StopContainer"}}" type="button">stop</a>
 								<a href="{{urlfor "ContainerController.DeleteContainer"}}" type="button">delete</a>
 							</td>

@@ -51,7 +51,7 @@ func (c *ContainerController) InfoContainer() {
 
 }
 
-// @router /container/start [get]
+// @router /container/start:id [get]
 func (c *ContainerController) StartContainer() {
 	id := c.GetString("id")
 	cli, err := client.NewEnvClient()
