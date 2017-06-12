@@ -32,8 +32,13 @@ func (c *ContainerController) ListContainer() {
 	c.TplName = "container/index.tpl"
 }
 
-// @router /container/create [post]
+// @router /container/create [get]
 func (c *ContainerController) CreateContainer() {
+	c.TplName = "container/crate.tpl"
+}
+
+// @router /container/store [post]
+func (c *ContainerController) StoreContainer() {
 
 }
 
@@ -85,6 +90,23 @@ func (c *ContainerController) StopContainer() {
 	}
 	var t time.Duration = 0
 	err = cli.ContainerStop(context.Background(), id, &t)
+	if err != nil {
+		if client.IsErrContainerNotFound(err) {
+			panic(err)
+		}
+	}
+	c.Redirect(c.URLFor("ContainerController.ListContainer"), 302)
+}
+
+// @router /container/restart:id [get]
+func (c *ContainerController) RestartContainer() {
+	id := c.GetString("id")
+	cli, err := client.NewEnvClient()
+	if err != nil {
+		panic(err)
+	}
+	var t time.Duration = 0
+	err = cli.ContainerRestart(context.Background(), id, &t)
 	if err != nil {
 		if client.IsErrContainerNotFound(err) {
 			panic(err)
