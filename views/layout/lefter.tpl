@@ -40,7 +40,7 @@
                                     	<a href="{{urlfor "ContainerController.ListContainer"}}">容器管理</a>
                                 	</li>
                                 	<li>
-                                    	<a href="{{urlfor "SwarmController.InfoSwarm"}}">镜像管理</a>
+                                    	<a href="{{urlfor "ImageController.ListImage"}}">镜像管理</a>
                                 	</li>
                                 	<li>
                                     	<a href="{{urlfor "ServiceController.ListService"}}">容器管理</a>
