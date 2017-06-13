@@ -22,7 +22,7 @@
                                     	<a href="{{urlfor "SwarmController.InfoSwarm"}}">集群信息</a>
                                 	</li>
 								<li>
-                                    	<a href="{{urlfor "TaskController.ListTask"}}">节点管理</a>
+                                    	<a href="{{urlfor "NodeController.ListNode"}}">节点管理</a>
                                 	</li>
                                 	<li>
                                     	<a href="{{urlfor "ServiceController.ListService"}}">服务</a>
@@ -43,7 +43,7 @@
                                     	<a href="{{urlfor "ImageController.ListImage"}}">镜像管理</a>
                                 	</li>
                                 	<li>
-                                    	<a href="{{urlfor "ServiceController.ListService"}}">容器管理</a>
+                                    	<a href="{{urlfor "ServiceController.ListService"}}">数据卷管理</a>
                                 	</li>
 								<li>
                                     	<a href="{{urlfor "TaskController.ListTask"}}">端口管理</a>
