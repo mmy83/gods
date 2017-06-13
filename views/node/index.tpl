@@ -18,10 +18,13 @@
 						<th>Hostname</th>
 						<th>State</th>
 						<th>Availability</th>
+						<th>Role</th>
 						<th>Node Addr</th>
 						<th>Manager Addr</th>
-						<th>Message State</th>
-						<th></th>
+						<th>Message State</th>Description
+						<th>Cpu</th>
+						<th>Memory</th>
+						<th>Memory</th>
 					</tr>
 			    	</thead>
 				    	<tbody>  
@@ -31,9 +34,12 @@
 				            	<td>{{$val.Description.Hostname}}</td>
 				            	<td>{{$val.Status.State}}</td>
 				            	<td>{{$val.Spec.Availability}}</td>
+							<td>{{$val.Spec.Role}}</td>
 							<td>{{$val.Status.Addr}}</td>
 							<td>{{$val.ManagerStatus.Addr}}</td>
 				            	<td>{{if $val.ManagerStatus.Leader}}Leader{{end}}</td>
+							<td>{{$val.Description.Resources.NanoCPUs}}</td>
+							<td>{{$val.Description.Resources.MemoryBytes}}</td>
 							<td>
 								<a href="{{urlfor "ContainerController.StartContainer" "id" $val.ID}}" type="button">start</a>
 								<a href="{{urlfor "ContainerController.RestartContainer" "id" $val.ID}}" type="button">restart</a>
