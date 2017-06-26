@@ -12,6 +12,7 @@ func init() {
 	beego.Include(&controllers.ContainerController{})
 	beego.Include(&controllers.ImageController{})
 	beego.Include(&controllers.NodeController{})
+	beego.Include(&controllers.VolumeController{})
 
 	beego.Router("/", &controllers.MainController{})
 }

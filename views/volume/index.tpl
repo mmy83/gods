@@ -1,7 +1,6 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">服务列表</h1>
-		<a type="button" href="{{urlfor "ServiceController.CreateService"}}" class="btn btn-primary btn-lg text-rigth">创建服务</a>
+		<h1 class="page-header">数据卷列表</h1>
 	</div>
 </div>
 <div class="row">
@@ -15,22 +14,18 @@
 			<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 			    	<thead>
 			        	<tr role="row">
-						<th>ID</th>
-						<th>NAME</th>
-						<th>REPLICAS</th>
-						<th>IMAGE</th>
-						<th>COMMAND</th>
-						<th>操作</th>
+						<th>DRIVER</th>
+						<th>VOLUME NAME</th>
+						<th>CREATED</th>
+						<th></th>
 					</tr>
 			    	</thead>
 				    	<tbody>  
-						{{range $key, $val := .Services}}
+						{{range $key, $val := .Volumes.Volumes}}
 						<tr class="odd gradeX">
-				            	<td class="">{{substr $val.ID 0 12}}</td>
-				            	<td>{{$val.Spec.Name}}</td>
-				            	<td class="sorting_1">{{$val.Spec.Mode.Replicated.Replicas}}</td>
-				            	<td>{{$val.Spec.TaskTemplate.ContainerSpec.Image}}</td>
-				            	<td>{{$val.Spec.TaskTemplate.ContainerSpec.Command}}</td>
+				            	<td class="">{{$val.Driver}}</td>
+				            	<td>{{$val.Name}}</td>
+				            	<td>{{$val.CreatedAt}}</td>
 							<td>
 								<a href="{{urlfor "ContainerController.StartContainer" "id" $val.ID}}" type="button">start</a>
 								<a href="{{urlfor "ContainerController.RestartContainer" "id" $val.ID}}" type="button">restart</a>

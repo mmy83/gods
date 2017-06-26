@@ -14,7 +14,6 @@ type ImageController struct {
 
 // @router /image/index [get]
 func (c *ImageController) ListImage() {
-
 	cli, err := client.NewEnvClient()
 	if err != nil {
 		panic(err)

@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/astaxie/beego"
 	"github.com/docker/docker/api/types"
@@ -22,19 +21,35 @@ func (c *ServiceController) ListService() {
 	}
 	opt := types.ServiceListOptions{}
 	services, err := cli.ServiceList(context.Background(), opt)
-	fmt.Println(services)
-	c.Data["Service"] = services
+	//	fmt.Println(services)
+	c.Data["Services"] = services
+	c.LayoutSections = make(map[string]string)
 	c.Layout = "layout/main.tpl"
+	c.LayoutSections["Scripts"] = "js/tablelist.tpl"
 	c.TplName = "service/index.tpl"
 }
 
-// @router /service/create [post]
+// @router /service/create [get]
 func (c *ServiceController) CreateService() {
-
+	cli, err := client.NewEnvClient()
+	if err != nil {
+		panic(err)
+	}
+	images, err := cli.ImageList(context.Background(), types.ImageListOptions{All: true})
+	c.Data["Images"] = images
+	c.LayoutSections = make(map[string]string)
+	c.Layout = "layout/main.tpl"
+	c.LayoutSections["Scripts"] = "js/tablelist.tpl"
+	c.TplName = "service/create.tpl"
 }
 
-// @router /service/delete [get]
-func (c *ServiceController) DeleteService() {
+// @router /service/store [post]
+func (c *ServiceController) StoreService() {
+	c.TplName = "service/create.tpl"
+}
+
+// @router /service/remove [get]
+func (c *ServiceController) RemoveService() {
 
 }
 

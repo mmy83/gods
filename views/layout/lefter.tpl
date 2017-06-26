@@ -36,14 +36,14 @@
 						<li>
                             	<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 单机操作<span class="fa arrow"></span></a>
                             	<ul class="nav nav-second-level">
-								<li>
+						<li>
                                     	<a href="{{urlfor "ContainerController.ListContainer"}}">容器管理</a>
                                 	</li>
                                 	<li>
                                     	<a href="{{urlfor "ImageController.ListImage"}}">镜像管理</a>
                                 	</li>
                                 	<li>
-                                    	<a href="{{urlfor "ServiceController.ListService"}}">数据卷管理</a>
+                                    	<a href="{{urlfor "VolumeController.ListVolume"}}">数据卷管理</a>
                                 	</li>
 								<li>
                                     	<a href="{{urlfor "TaskController.ListTask"}}">端口管理</a>
