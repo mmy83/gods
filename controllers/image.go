@@ -2,6 +2,8 @@ package controllers
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 
 	"github.com/astaxie/beego"
 	"github.com/docker/docker/api/types"
@@ -52,4 +54,22 @@ func (c *ImageController) RemoveImage() {
 		}
 	}
 	c.Redirect(c.URLFor("ImageController.ListImage"), 302)
+}
+
+// @router /image/info:id [get]
+func (c *ImageController) InfoImage() {
+	id := c.GetString("id")
+	cli, err := client.NewEnvClient()
+	if err != nil {
+		panic(err)
+	}
+	info, _, err := cli.ImageInspectWithRaw(context.Background(), id)
+	if err != nil {
+		if client.IsErrImageNotFound(err) {
+			panic(err)
+		}
+	}
+	infoJson, err := json.Marshal(info)
+	c.TplName = "image/info.tpl"
+	fmt.Println(string(infoJson))
 }

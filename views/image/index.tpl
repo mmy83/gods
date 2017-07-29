@@ -27,7 +27,7 @@
 						<tr class="odd gradeX">
 				            	<td class="">{{$val.RepoDigests}}</td>
 				            	<td>{{$val.RepoTags}}</td>
-				            	<td>{{substr $val.ID 0 12}}</td>
+				            	<td>{{$val.ID}}</td>
 				            	<td>{{$val.Created|datetime}}</td>
 				            	<td>{{$val.Size}}</td>
 							<td>

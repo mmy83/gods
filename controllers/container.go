@@ -34,7 +34,16 @@ func (c *ContainerController) ListContainer() {
 
 // @router /container/create [get]
 func (c *ContainerController) CreateContainer() {
-	c.TplName = "container/crate.tpl"
+	cli, err := client.NewEnvClient()
+	if err != nil {
+		panic(err)
+	}
+	images, err := cli.ImageList(context.Background(), types.ImageListOptions{All: true})
+	c.Data["Images"] = images
+	c.LayoutSections = make(map[string]string)
+	c.Layout = "layout/main.tpl"
+	c.LayoutSections["Scripts"] = "js/tablelist.tpl"
+	c.TplName = "container/create.tpl"
 }
 
 // @router /container/store [post]
